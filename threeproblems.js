@@ -56,7 +56,7 @@ function zipList(list1, list2){
 function zipListTheSimpleWay(list1, list2){
   return _.flatten(_.zip(list1,list2));
 }
-console.log(zipListTheSimpleWay(testList1, testList2));
+//console.log(zipListTheSimpleWay(testList1, testList2));
 /*
 Problem 3: Write a function called fib that returns a list of the first 100 Fibonacci numbers. By definition, the first
 two numbers in the Fibonacci sequence are 0 and 1, and each subsequent number is the sum of the previous two. As an
@@ -76,4 +76,61 @@ function fib(){
   }
   return fibList;
 }
-console.log(fib());
+//console.log(fib());
+/*
+Problem 4 Write a function that given a list of non negative integers, arranges them such that they form the largest
+possible number. For example, given [50, 2, 1, 9], the largest formed number is 95021.
+*/
+var testNums2 = [50, 2, 1, 9];
+function largestNum(list){
+  var copy=list;
+  var holder =0;
+  for(index in copy){
+    for(pndex in copy){
+      if(index>pndex){
+        if(redDig(copy[index]) > redDig(copy[pndex])){
+          holder=copy[index];
+          copy[index]=copy[pndex];
+          copy[pndex]=holder;
+        }
+      }
+      else if(index<pndex){
+        if(redDig(copy[index]) < redDig(copy[pndex])){
+          holder=copy[index];
+          copy[index]=copy[pndex];
+          copy[pndex]=holder;
+        }
+      }
+    }
+  }
+  return makeNumber(copy);
+}
+
+function makeNumber(list){
+  var number = "";
+  for(index in list){
+    number+=list[index];
+  }
+  return number;
+}
+function redDig(num){
+  if(num<10){
+    return num;
+  }
+  else{
+    return redDig(num/10);
+  }
+}
+
+//console.log(largestNum(testNums2));
+/*
+Problem 5 Write a program that outputs all possibilities to put + or - or
+nothing between the numbers 1, 2, ..., 9
+(in this order) such that the result is always 100. For example:
+1 + 2 + 34 – 5 + 67 – 8 + 9 = 100.
+*/
+
+var all9=[1,2,3,4,5,6,7,8,9];
+function find100(sum, num, index){
+
+}
